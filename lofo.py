@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
 
-class LOFO:
+class LOFO(object):
     def __init__(self, X, Y, model, cv, metric, direction, fit_params=None, 
                  predict_type='predict', return_bad_feats=False, groups=None,
                  is_keras_model=False):
