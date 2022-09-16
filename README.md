@@ -13,6 +13,10 @@ This repository contains the implementation of **LOFO** in Python and can be use
 ```
 git clone https://github.com/Azzam-Radman/LOFO.git
 ```
+If you are running the code in a Notebook, use "!" before git:
+```
+!git clone https://github.com/Azzam-Radman/LOFO.git
+```
 - Import lofo
 ```
 import os
