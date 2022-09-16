@@ -72,7 +72,7 @@ class LOFO(object):
     def __call__(self):
         
         if self.is_keras_model:
-            model.save_weights('original_weights.h5')
+            self.model.save_weights('original_weights.h5')
         
         feats = self.X.copy()
         all_feats = feats.columns.tolist()
