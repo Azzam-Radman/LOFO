@@ -42,10 +42,7 @@ warnings.filterwarnings('ignore')
 
 X = train_df.iloc[:, :-1]
 Y = train_df.iloc[:, -1]
-
-tf.keras.backend.clear_session()
 model = LogisticRegression()
-
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
 metric = roc_auc_score
 direction = 'max'
