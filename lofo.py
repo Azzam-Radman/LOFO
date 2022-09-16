@@ -55,7 +55,7 @@ class LOFO(object):
             else:
                 model = copy.deepcopy(self.model)
             
-            if fit_params is None:
+            if self.fit_params is None:
                 model.fit(x_train, y_train)
             else:
                 model.fit(**eval(fit_params))
