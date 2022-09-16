@@ -78,7 +78,6 @@ class LOFO:
         all_feats = feats.columns.tolist()
         bad_feats = []
         
-        print(self.is_keras_model)
         print(f'Number of columns before LOFO: {len(all_feats)}')
         print(f'Score before LOFO: {self.cross_validation(feats)}')
         
