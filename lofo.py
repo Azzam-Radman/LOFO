@@ -58,7 +58,7 @@ class LOFO(object):
             if self.fit_params is None:
                 model.fit(x_train, y_train)
             else:
-                model.fit(**eval(fit_params))
+                model.fit(**eval(self.fit_params))
             
             if self.predict_type == 'predict':
                 valid_preds = model.predict(x_valid)
