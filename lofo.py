@@ -36,9 +36,6 @@ class LOFO:
         self.return_bad_feats = return_bad_feats
         self.is_keras_model = is_keras_model
         
-        if is_keras_model:
-            model.save_weights('original_weights.h5')
-        
     def cross_validation(self, X):
         
         if 'Group' in type(self.cv).__name__:
@@ -73,6 +70,9 @@ class LOFO:
             return valid_score
         
     def __call__(self):
+        
+        if is_keras_model:
+            model.save_weights('original_weights.h5')
         
         feats = self.X.copy()
         all_feats = feats.columns.tolist()
