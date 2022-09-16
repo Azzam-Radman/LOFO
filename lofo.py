@@ -36,7 +36,7 @@ class LOFO:
         self.return_bad_feats = return_bad_feats
         self.is_keras_model = is_keras_model
         
-        if self.is_keras_model:
+        if is_keras_model:
             model.save_weights('original_weights.h5')
         
     def cross_validation(self, X):
