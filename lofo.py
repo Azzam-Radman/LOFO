@@ -71,7 +71,7 @@ class LOFO:
         
     def __call__(self):
         
-        if is_keras_model:
+        if self.is_keras_model:
             model.save_weights('original_weights.h5')
         
         feats = self.X.copy()
