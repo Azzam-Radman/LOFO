@@ -25,7 +25,7 @@ directory = os.path.join(os.getcwd(), 'LOFO')
 sys.path.append(directory)
 import lofo
 ```
-
+- For more details on LOFO parameters refer to [LOFO](https://github.com/Azzam-Radman/LOFO/blob/main/lofo.py).
 - Import the needed libraries for your model, cross-validation, etc
 ## Scikit-Learn Model Example
 ```
