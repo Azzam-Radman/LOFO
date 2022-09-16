@@ -36,7 +36,7 @@ class LOFO:
         self.return_bad_feats = return_bad_feats
         self.is_keras_model = is_keras_model
         
-        if is_keras_model:
+        if self.is_keras_model:
             model.save_weights('original_weights.h5')
         
     def cross_validation(self, X):
@@ -52,7 +52,7 @@ class LOFO:
             x_train, x_valid = X.iloc[train_idx, :].values, X.iloc[valid_idx, :].values
             y_train, y_valid = self.Y.iloc[train_idx].values, self.Y.iloc[valid_idx].values
             
-            if is_keras_model:
+            if self.is_keras_model:
                 model = self.model
                 model.load_weights('original_weights.h5')
             else:
@@ -88,7 +88,7 @@ class LOFO:
         
         print('\nLOFO in progress...')
         for col in tqdm(all_feats, total=len(all_feats)):
-            if is_keras_model:
+            if self.is_keras_model:
                 current_feat = feats[col].values
                 # set feature values to 0 let the network ignore it
                 feats[col] = 0
@@ -102,7 +102,7 @@ class LOFO:
                 if valid_score <= best_score:
                     best_score = valid_score
                     bad_feats.append(col)
-                    if is_keras_model:
+                    if self.is_keras_model:
                         feats[col] = 0
                     else:
                         feats = feats.drop(col, axis=1)
@@ -111,7 +111,7 @@ class LOFO:
                 if valid_score >= best_score:
                     best_score = valid_score
                     bad_feats.append(col)
-                    if is_keras_model:
+                    if self.is_keras_model:
                         feats[col] = 0
                     else:
                         feats = feats.drop(col, axis=1)
