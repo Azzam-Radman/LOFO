@@ -11,18 +11,54 @@ This repository contains the implementation of **LOFO** in Python and can be use
 # Usage
 - Clone the repo:
 ```
-git clone git@github.com:Azzam-Radman/LOFO.git
+git clone https://github.com/Azzam-Radman/LOFO.git
 ```
 
 - Import the needed libraries for your model, cross-validation, etc
+## TensorFlow/Keras Model Example
 ```
 import numpy as np
-import pandas as pd
-
 from sklearn.metrics import roc_auc_score
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
+from sklearn.linear_model import LogisticRegression
+```
+- Define the paramters
+```
+# shutdown warning messages
+warnings.filterwarnings('ignore')
 
+X = train_df.iloc[:, :-1]
+Y = train_df.iloc[:, -1]
+
+tf.keras.backend.clear_session()
+model = LogisticRegression()
+
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
+metric = roc_auc_score
+direction = 'max'
+fit_params = "{'X': x_train, 'y': y_train}"
+predict_type = 'predict_proba'
+return_bad_feats = True
+groups = None
+is_keras_model = False
+```
+
+- Define the LOFO object and call it
+```
+lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params, 
+                   predict_type, return_bad_feats, groups, is_keras_model)
+
+clean_X, bad_feats = lofo_object()
+```
+clean_X: is the dataset containing the useful features only.
+
+bad_feats: are the harmful or useless features.
+
+## LightGBM Model Example
+```
+import numpy as np
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import StratifiedKFold
 import lightgbm as lgbm
 ```
 
@@ -57,5 +93,55 @@ lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params,
 clean_X, bad_feats = lofo_object()
 ```
 
-clean_X: is the dataset containing the useful features only.
-bad_feats: are the harmful or useless features.
+## TensorFlow/Keras Model Example
+```
+import numpy as np
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import StratifiedKFold
+import tensorflow as tf
+from tensorflow.keras import layers
+```
+- Construct the model
+```
+def nn_model():
+    inputs = layers.Input(shape=X.shape[-1],)
+    x = layers.Dense(256, activation='relu')(inputs)
+    x = layers.Dense(64, activation='relu')(x)
+    output = layers.Dense(1, activation='sigmoid')(x)
+    
+    model = tf.keras.Model(inputs=inputs, outputs=output)
+    model.compile(loss='binary_crossentropy',
+              optimizer='adam',)
+    
+    return model
+```
+
+- Define the paramters
+```
+# shutdown warning messages
+warnings.filterwarnings('ignore')
+
+X = train_df.iloc[:, :-1]
+Y = train_df.iloc[:, -1]
+
+tf.keras.backend.clear_session()
+model = nn_model()
+
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
+metric = roc_auc_score
+direction = 'max'
+fit_params = "{'x': x_train, 'y': y_train, 'validation_data': (x_valid, y_valid), 'epochs': 10, 'batch_size': 256, 'verbose': 0}"
+predict_type = 'predict'
+return_bad_feats = True
+groups = None
+is_keras_model = True
+```
+
+- Define the LOFO object and call it
+```
+lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params, 
+                   predict_type, return_bad_feats, groups, is_keras_model)
+
+clean_X, bad_feats = lofo_object()
+```
+
