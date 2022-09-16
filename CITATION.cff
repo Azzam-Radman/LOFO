@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+authors:
+  - family-names: Radman
+    given-names: Azzam
+    orcid: https://orcid.org/0000-0002-2724-4748
+title: "Leave One Feature Out (LOFO)"
+version: 1.0.0
+doi: 10.5281/zenodo.7086710
+date-released: 2022-09-16
