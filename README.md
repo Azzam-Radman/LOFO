@@ -144,4 +144,3 @@ lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params,
 
 clean_X, bad_feats = lofo_object()
 ```
-
