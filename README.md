@@ -13,10 +13,19 @@ This repository contains the implementation of **LOFO** in Python and can be use
 ```
 git clone https://github.com/Azzam-Radman/LOFO.git
 ```
+- Import lofo
+```
+import os
+import sys
+directory = os.path.join(os.getcwd(), 'LOFO')
+sys.path.append(directory)
+import lofo
+```
 
 - Import the needed libraries for your model, cross-validation, etc
-## TensorFlow/Keras Model Example
+## Scikit-Learn Model Example
 ```
+import warnings
 import numpy as np
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold
@@ -45,8 +54,8 @@ is_keras_model = False
 
 - Define the LOFO object and call it
 ```
-lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params, 
-                   predict_type, return_bad_feats, groups, is_keras_model)
+lofo_object = lofo.LOFO(X, Y, model, cv, metric, direction, fit_params, 
+                        predict_type, return_bad_feats, groups, is_keras_model)
 
 clean_X, bad_feats = lofo_object()
 ```
@@ -56,6 +65,7 @@ bad_feats: are the harmful or useless features.
 
 ## LightGBM Model Example
 ```
+import warnings
 import numpy as np
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold
@@ -88,13 +98,14 @@ is_keras_model = False
 
 - Define the LOFO object and call it
 ```
-lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params, 
-                   predict_type, return_bad_feats, groups, is_keras_model)
+lofo_object = lofo.LOFO(X, Y, model, cv, metric, direction, fit_params, 
+                        predict_type, return_bad_feats, groups, is_keras_model)
 clean_X, bad_feats = lofo_object()
 ```
 
 ## TensorFlow/Keras Model Example
 ```
+import warnings
 import numpy as np
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold
@@ -139,8 +150,8 @@ is_keras_model = True
 
 - Define the LOFO object and call it
 ```
-lofo_object = LOFO(X, Y, model, cv, metric, direction, fit_params, 
-                   predict_type, return_bad_feats, groups, is_keras_model)
+lofo_object = lofo.LOFO(X, Y, model, cv, metric, direction, fit_params, 
+                        predict_type, return_bad_feats, groups, is_keras_model)
 
 clean_X, bad_feats = lofo_object()
 ```
