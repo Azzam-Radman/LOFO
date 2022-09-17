@@ -27,7 +27,7 @@ import lofo
 ```
 - For more details on LOFO parameters refer to [lofo.py](https://github.com/Azzam-Radman/LOFO/blob/main/lofo.py).
 - Import the needed libraries for your model, cross-validation, etc
-## Scikit-Learn Model Example
+### Scikit-Learn Model Example
 ```
 import warnings
 import numpy as np
@@ -64,7 +64,7 @@ clean_X: is the dataset containing the useful features only.
 
 bad_feats: are the harmful or useless features.
 
-## LightGBM Model Example
+### LightGBM Model Example
 ```
 import warnings
 import numpy as np
@@ -104,7 +104,7 @@ lofo_object = lofo.LOFO(X, Y, model, cv, metric, direction, fit_params,
 clean_X, bad_feats = lofo_object()
 ```
 
-## TensorFlow/Keras Model Example
+### TensorFlow/Keras Model Example
 ```
 import warnings
 import numpy as np
