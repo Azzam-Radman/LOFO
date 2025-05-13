@@ -1,6 +1,6 @@
 ## 🧠 LOFO (Leave One Feature Out)
 
-> One of the most **powerful and intuitive techniques** for feature selection — now in Python, compatible with Scikit-Learn, LightGBM, XGBoost, CatBoost, and TensorFlow/Keras models.
+One of the most **powerful and intuitive techniques** for feature selection — now in Python, compatible with Scikit-Learn, LightGBM, XGBoost, CatBoost, and TensorFlow/Keras models.
 
 ![LOFO Banner](https://github.com/Azzam-Radman/LOFO/blob/main/assets/LOFO.png)
 *Visualize the power of removing irrelevant features.*
