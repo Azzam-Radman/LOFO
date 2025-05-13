@@ -129,14 +129,3 @@ bad_feats  # List of harmful or useless features
 ```
 
 ---
-
-### 📸 Suggested Additions
-
-* Add a **logo** in the header (you can design one using [Canva](https://www.canva.com/) or [Hatchful](https://hatchful.shopify.com/)).
-* Add **badges** like:
-
-```md
-![Python](https://img.shields.io/badge/Python-3.7%2B-blue?logo=python)
-![License](https://img.shields.io/github/license/Azzam-Radman/LOFO)
-![Stars](https://img.shields.io/github/stars/Azzam-Radman/LOFO?style=social)
-```
